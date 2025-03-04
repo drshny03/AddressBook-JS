@@ -1,5 +1,6 @@
 //class to store contant details
-class Address {
+class Address 
+{
     constructor(firstName, lastName, address, city, state, zip, phone, email) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -57,8 +58,10 @@ function editAddress(name, address)
     } else {
         throw new Error("contact not found");
     }
+}
 
-    function deleteAddress(name){ 
+    function deleteAddress(name)
+    { 
         let index = addressBook.findIndex(address => address.firstName === name)
         if(index !== -1){
             addressBook.splice(index,1);
@@ -66,4 +69,8 @@ function editAddress(name, address)
             console.log("address not found");
         }
     }
-}
+    function findNumberOfAddress()
+    { 
+        let totalCount = addressBook.reduce(count => count+1, 0);
+        return totalCount;
+    }
