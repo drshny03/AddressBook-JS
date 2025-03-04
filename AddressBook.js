@@ -57,4 +57,13 @@ function editAddress(name, address)
     } else {
         throw new Error("contact not found");
     }
+
+    function deleteAddress(name){ 
+        let index = addressBook.findIndex(address => address.firstName === name)
+        if(index !== -1){
+            addressBook.splice(index,1);
+        }else{
+            console.log("address not found");
+        }
+    }
 }
