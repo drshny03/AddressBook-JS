@@ -48,3 +48,13 @@ function addAddress(address)
 {
     addressBook.push(address);
 }
+function editAddress(name, address)
+{ 
+    let existingAddress = addressBook.find(name => address.firstName === name);
+    if (existingAddress) {
+        Object.assign(existingAddress, address);
+        address.validate();
+    } else {
+        throw new Error("contact not found");
+    }
+}
