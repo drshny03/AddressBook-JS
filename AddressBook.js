@@ -1,6 +1,5 @@
 //class to store contant details
-class Address 
-{
+class Address {//uc1
     constructor(firstName, lastName, address, city, state, zip, phone, email) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -13,7 +12,7 @@ class Address
         //validate fields
         this.validate();
     }
-    validate() { 
+    validate() { //uc2
         //regex 
         const nameRegex = /^[A-Z][a-zA-Z]{2,}$/;
         const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -43,34 +42,37 @@ class Address
         }
     }
 }
-let addressBook = []  
-
-function addAddress(address)
-{
+//uc3
+let addressBook = []  //array to store address
+//function to store addressbook to array
+function addAddress(address){
+    //uc7
+    let duplicateLength = addressBook.filter(existingAddress => existingAddress.firstName === address.firstName);
+    if(duplicateLength > 0){
+        console.log(address.firstName, " already exist");
+        return;
+    }
     addressBook.push(address);
 }
-function editAddress(name, address)
-{ 
-    let existingAddress = addressBook.find(name => address.firstName === name);
+//uc4
+function editAddress(name, address){ //function to find and edit contact
+    let existingAddress = addressBook.find(address => address.firstName === name);
     if (existingAddress) {
         Object.assign(existingAddress, address);
         address.validate();
     } else {
-        throw new Error("contact not found");
+        console.log("address not found");
     }
 }
-
-    function deleteAddress(name)
-    { 
-        let index = addressBook.findIndex(address => address.firstName === name)
-        if(index !== -1){
-            addressBook.splice(index,1);
-        }else{
-            console.log("address not found");
-        }
+function deleteAddress(name){ //uc5
+    let index = addressBook.findIndex(address => address.firstName === name)
+    if(index !== -1){
+        addressBook.splice(index,1);
+    }else{
+        console.log("address not found");
     }
-    function findNumberOfAddress()
-    { 
-        let totalCount = addressBook.reduce(count => count+1, 0);
-        return totalCount;
-    }
+}
+function findNumberOfAddress(){ //uc6
+    let totalCount = addressBook.reduce(count => count+1, 0);
+    return totalCount;
+}
