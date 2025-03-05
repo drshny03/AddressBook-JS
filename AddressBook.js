@@ -86,3 +86,7 @@ function viewByCityOrState(city, state)
     console.log(viewAddress);
     
 }
+function countByCityOrState(city, state)
+{
+    return searchByCityOrState(city,state).length;
+}
