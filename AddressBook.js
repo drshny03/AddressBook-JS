@@ -96,3 +96,17 @@ function sortByName()
     addressBook.sort((first, second) => 
         (first.firstName > second.firstName) ? 1:-1);
 }
+
+function sortByCity(){//uc12
+    addressBook.sort((first, second) => 
+        (first.city > second.city) ? 1:-1);
+}
+//test 
+let darshanAddress = new Address("Darshan", "Yadav", "Narela", "Bhopal", "Madhya Pradesh", 402022,7049752155, "drshny@gmail.com");
+let rajveerAddress = new Address("Rajveer", "Kajle", "AnandNagar", "Bhopal", "Madhya Pradesh", 402022,1234567890, "rajveer@gmail.com");
+
+addAddress(darshanAddress);
+addAddress(veerAddress);
+viewByCityOrState("Bhopal");
+let totalAddresss = findNumberOfAddress();
+console.log(totalAddresss);
