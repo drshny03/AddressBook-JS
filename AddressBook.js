@@ -90,3 +90,9 @@ function countByCityOrState(city, state)
 {
     return searchByCityOrState(city,state).length;
 }
+
+function sortByName()
+{ 
+    addressBook.sort((first, second) => 
+        (first.firstName > second.firstName) ? 1:-1);
+}
