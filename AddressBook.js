@@ -1,5 +1,5 @@
 //class to store contant details
-class Address {//uc1
+class Address {
     constructor(firstName, lastName, address, city, state, zip, phone, email) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -9,11 +9,10 @@ class Address {//uc1
         this.zip = zip;
         this.phone = phone;
         this.email = email;
-        //validate fields
+       
         this.validate();
     }
-    validate() { //uc2
-        //regex 
+    validate() { 
         const nameRegex = /^[A-Z][a-zA-Z]{2,}$/;
         const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         const phoneRegex = /^[0-9]{10}$/;
@@ -42,11 +41,10 @@ class Address {//uc1
         }
     }
 }
-//uc3
-let addressBook = []  //array to store address
-//function to store addressbook to array
+
+let addressBook = []  
 function addAddress(address){
-    //uc7
+    
     let duplicateLength = addressBook.filter(existingAddress => existingAddress.firstName === address.firstName);
     if(duplicateLength > 0){
         console.log(address.firstName, " already exist");
@@ -54,9 +52,9 @@ function addAddress(address){
     }
     addressBook.push(address);
 }
-//uc4
-function editAddress(name, address){ //function to find and edit contact
-    let existingAddress = addressBook.find(address => address.firstName === name);
+
+function editAddress(name, address){ 
+     let existingAddress = addressBook.find(address => address.firstName === name);
     if (existingAddress) {
         Object.assign(existingAddress, address);
         address.validate();
@@ -64,7 +62,7 @@ function editAddress(name, address){ //function to find and edit contact
         console.log("address not found");
     }
 }
-function deleteAddress(name){ //uc5
+function deleteAddress(name){ 
     let index = addressBook.findIndex(address => address.firstName === name)
     if(index !== -1){
         addressBook.splice(index,1);
@@ -72,7 +70,7 @@ function deleteAddress(name){ //uc5
         console.log("address not found");
     }
 }
-function findNumberOfAddress(){ //uc6
+function findNumberOfAddress(){ 
     let totalCount = addressBook.reduce(count => count+1, 0);
     return totalCount;
 }
@@ -80,4 +78,11 @@ function findNumberOfAddress(){ //uc6
 function searchByCityOrState(city, state)
  { 
     return addressBook.filter(address => address.city === city || address.state === state);
+}
+
+function viewByCityOrState(city, state)
+{
+    let viewAddress = addressBook.filter(address => address.city === city || address.state === state);
+    console.log(viewAddress);
+    
 }
