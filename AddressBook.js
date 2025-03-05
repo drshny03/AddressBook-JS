@@ -76,3 +76,8 @@ function findNumberOfAddress(){ //uc6
     let totalCount = addressBook.reduce(count => count+1, 0);
     return totalCount;
 }
+
+function searchByCityOrState(city, state)
+ { 
+    return addressBook.filter(address => address.city === city || address.state === state);
+}
